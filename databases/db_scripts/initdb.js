@@ -1,6 +1,14 @@
-const _ORGANS = require("./_ORGANS.js");
-const _PERSONNEL = require("./_PERSONNEL");
+const ORGANES = require("./ORGANES.js");
+const PERSONNEL = require("./PERSONNEL.js");
 const sql = require('better-sqlite3');
+
+async function purgeDatabase(db) {
+    db.prepare(`DROP TABLE IF EXISTS personnel;`).run();
+    db.prepare(`DROP TABLE IF EXISTS organes;`).run();
+    db.prepare(`DROP TABLE IF EXISTS correspondances;`).run();
+
+    console.log("Database purged")
+}
 
 async function setUpDatabase(db) {
     db.prepare(`
@@ -23,7 +31,7 @@ async function setUpDatabase(db) {
         `).run();
 
     db.prepare(`
-        CREATE TABLE IF NOT EXISTS correspondance (
+        CREATE TABLE IF NOT EXISTS correspondances (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         id_organe TEXT NOT NULL,
         id_personnel TEXT NOT NULL
@@ -33,19 +41,21 @@ async function setUpDatabase(db) {
 };
 
 async function initData() {
-    const db = sql('trombinoscope.db');
+    const db = sql('./databases/trombinoscope.db');
+    purgeDatabase(db)
     setUpDatabase(db);
-    const organInsert = db.prepare(`INSERT INTO organes VALUES(
+
+    const organesInsert = db.prepare(`INSERT INTO organes VALUES(
         null,
         @nom,
         @alias,
         @description,
         @image
         )`)
-    for (const organ of _ORGANS.default) {
-        organInsert.run(organ)
+    for (const organe of ORGANES.default) {
+        organesInsert.run(organe)
     }
-    console.log("Organs table populated")
+    console.log("Organes table populated")
 
     const personnelInsert = db.prepare(`INSERT INTO personnel VALUES(
         null,
@@ -54,7 +64,7 @@ async function initData() {
         @image
         )`)
 
-    for (const personne of _PERSONNEL.default) {
+    for (const personne of PERSONNEL.default) {
         personnelInsert.run(personne)
     }
     console.log("Personnel table populated")

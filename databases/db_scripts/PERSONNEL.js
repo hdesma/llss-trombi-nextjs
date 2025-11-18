@@ -1,4 +1,4 @@
-const _PERSONNEL = [
+const PERSONNEL = [
     {
         prenom: "Michel",
         nom: "Olivier",
@@ -21,7 +21,7 @@ const _PERSONNEL = [
     },
     {
         prenom: "Emilie",
-        nom: "Cazaubon-Gélinaux",
+        nom: "Cazaubon-Gélineaux",
         image: "/images/personnel.png"
     },
     {
@@ -46,7 +46,7 @@ const _PERSONNEL = [
     },
     {
         prenom: "Sylvain",
-        nom: "Krasnopolsy",
+        nom: "Krasnopolsky",
         image: "/images/personnel.png"
     },
     {
@@ -81,4 +81,4 @@ const _PERSONNEL = [
     },
 ]
 
-export default _PERSONNEL;
+export default PERSONNEL;

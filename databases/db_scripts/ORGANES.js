@@ -1,4 +1,4 @@
-const _ORGANS = [
+const ORGANES = [
     {
         nom: "Bureau",
         alias: "bureau",
@@ -31,4 +31,4 @@ const _ORGANS = [
     },
 ]
 
-export default _ORGANS
+export default ORGANES
