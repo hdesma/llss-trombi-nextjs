@@ -1,5 +1,5 @@
-const ORGANES = require("./ORGANES.js");
-const PERSONNEL = require("./PERSONNEL.js");
+const ORGANES = require("../db_sources/ORGANES.js");
+const PERSONNEL = require("../db_sources/PERSONNEL.js");
 const sql = require('better-sqlite3');
 
 async function purgeDatabase(db) {
