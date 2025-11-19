@@ -1,8 +1,9 @@
 const ORGANES = require("../db_sources/ORGANES.js");
 const PERSONNEL = require("../db_sources/PERSONNEL.js");
+const ROSTERS = require("../db_sources/ROSTERS.js")
 const sql = require('better-sqlite3');
 
-async function purgeDatabase(db) {
+function purgeDatabase(db) {
     db.prepare(`DROP TABLE IF EXISTS personnel;`).run();
     db.prepare(`DROP TABLE IF EXISTS organes;`).run();
     db.prepare(`DROP TABLE IF EXISTS correspondances;`).run();
@@ -10,7 +11,7 @@ async function purgeDatabase(db) {
     console.log("Database purged")
 }
 
-async function setUpDatabase(db) {
+function setUpDatabase(db) {
     db.prepare(`
         CREATE TABLE IF NOT EXISTS personnel (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,6 +26,8 @@ async function setUpDatabase(db) {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nom TEXT NOT NULL,
         alias TEXT NOT NULL,
+        id_chef INTEGER NULL,
+        ischeffe BOOLEAN NOT NULL,
         description TEXT NOT NULL,
         image TEXT NOT NULL
         );
@@ -33,22 +36,20 @@ async function setUpDatabase(db) {
     db.prepare(`
         CREATE TABLE IF NOT EXISTS correspondances (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        id_organe TEXT NOT NULL,
-        id_personnel TEXT NOT NULL
+        id_organe INTEGER NOT NULL,
+        id_personnel INTEGER NOT NULL
         );
         `).run();
     console.log("Tables set up")
 };
 
-async function initData() {
-    const db = sql('./databases/trombinoscope.db');
-    purgeDatabase(db)
-    setUpDatabase(db);
-
+function fillDatabase(db) {
     const organesInsert = db.prepare(`INSERT INTO organes VALUES(
         null,
         @nom,
         @alias,
+        null,
+        false,
         @description,
         @image
         )`)
@@ -68,10 +69,44 @@ async function initData() {
         personnelInsert.run(personne)
     }
     console.log("Personnel table populated")
+}
+
+function fillCorrespondancesTable(db, rosters) {
+
+    rosters.default.forEach((organe) => {
+        const organeAlias = organe.organeAlias
+        const membresNomsArray = organe.membresNomsArray
+        const organeId = db.prepare(`SELECT id FROM organes WHERE alias=?`).get(organeAlias)
+        const membresId = membresNomsArray.map((membreNom) => {
+            return db.prepare(`SELECT id FROM personnel WHERE nom=?`).get(membreNom)
+        })
+
+        membresId.forEach((id_personnel) => {
+            const args = {id_organe: organeId.id, id_personnel:id_personnel.id}
+            db.prepare(`INSERT INTO correspondances VALUES(
+            null,
+            @id_organe,
+            @id_personnel
+            )`).run(args)
+        })
+    })
+}
+
+function initData() {
+    console.log("Prod database setup")
+
+    const db = sql('./databases/trombinoscope.db');
+    purgeDatabase(db)
+    setUpDatabase(db);
+    fillDatabase(db)
+    fillCorrespondancesTable(db, ROSTERS)
+
     console.log("Prod database set up completed")
 }
 
-async function setUpAdminDatabase() {
+
+function setUpAdminDatabase() {
 
 };
+
 initData()
