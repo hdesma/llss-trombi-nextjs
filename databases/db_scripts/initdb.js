@@ -27,9 +27,10 @@ function setUpDatabase(db) {
         nom TEXT NOT NULL,
         alias TEXT NOT NULL,
         id_chef INTEGER NULL,
-        ischeffe BOOLEAN NOT NULL,
+        ischeffe BOOLEAN NOT NULL DEFAULT 0,
         description TEXT NOT NULL,
-        image TEXT NOT NULL
+        image TEXT NOT NULL,
+        display_organe BOOLEAN NOT NULL DEFAULT 1
         );
         `).run();
 
@@ -37,7 +38,8 @@ function setUpDatabase(db) {
         CREATE TABLE IF NOT EXISTS correspondances (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         id_organe INTEGER NOT NULL,
-        id_personnel INTEGER NOT NULL
+        id_personnel INTEGER NOT NULL,
+        display_link BOOLEAN NOT NULL DEFAULT 1
         );
         `).run();
     console.log("Tables set up")
@@ -51,7 +53,8 @@ function fillDatabase(db) {
         null,
         false,
         @description,
-        @image
+        @image,
+        true
         )`)
     for (const organe of ORGANES.default) {
         organesInsert.run(organe)
@@ -82,11 +85,12 @@ function fillCorrespondancesTable(db, rosters) {
         })
 
         membresId.forEach((id_personnel) => {
-            const args = {id_organe: organeId.id, id_personnel:id_personnel.id}
+            const args = { id_organe: organeId.id, id_personnel: id_personnel.id }
             db.prepare(`INSERT INTO correspondances VALUES(
             null,
             @id_organe,
-            @id_personnel
+            @id_personnel,
+            true
             )`).run(args)
         })
     })
