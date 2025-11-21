@@ -1,5 +1,6 @@
-import { MemberCard } from "@/components/MemberCard";
 import { getOrganeFromAlias, getMembresFromOrganeId } from "@/lib/organe";
+import MembersGrid from "@/components/MembersGrid";
+import classes from './page.module.css'
 
 export default async function PageOrgane({ params }) {
     const { organeSlug } = await params;
@@ -7,10 +8,8 @@ export default async function PageOrgane({ params }) {
     const organeRoster = getMembresFromOrganeId(organe.id)
     return (
         <div>
-            <h1>{organe.nom}</h1>
-            {organeRoster.map((membre) => {
-                return <MemberCard key={membre.id} membre={membre}/>
-            })}
+            <h1 className={classes.h1}>{organe.nom}</h1>
+            <MembersGrid organeRoster={organeRoster}/>
         </div>
     )
 }
