@@ -3,8 +3,10 @@
 }
 
 .card {
+  flex: 1 0 30%;
   height: 100%;
-  margin: 10px;
+  max-width: 286px;
+  margin: 10px auto;
   border: 1px solid grey;
   border-radius: 5%;
   box-shadow: 2px 2px 1px grey;
@@ -13,6 +15,20 @@
   }
   .imagebox {
     position: relative;
-    height: 15rem;
+    height: 20rem;
+    @media (min-width: 600px) {
+      img {
+        border-radius: 5%;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    flex: 1 0 75%;
+    max-width: 75%;
+    border: none;
+    box-shadow: none;
   }
 }
