@@ -6,16 +6,19 @@
   flex: 1 0 30%;
   height: 100%;
   max-width: 286px;
-  margin: 10px auto;
-  border: 1px solid grey;
+  margin: 10px;
+  border: 1px solid #D3D3D3;
   border-radius: 5%;
-  box-shadow: 2px 2px 1px grey;
+  box-shadow: 2px 2px 1px #D3D3D3;
   h2 {
     text-align: center;
+    height: 60px;
   }
   .imagebox {
     position: relative;
     height: 20rem;
+    border-radius: 5% 5% 0 0;
+    background-color: #D3D3D3;
     @media (min-width: 600px) {
       img {
         border-radius: 5%;

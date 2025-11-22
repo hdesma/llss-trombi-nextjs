@@ -1,5 +1,5 @@
 import { getOrganeFromAlias, getMembresFromOrganeId } from "@/lib/organe";
-import MembersGrid from "@/components/page_organe/MembersGrid";
+import Grid from "@/components/Grid";
 import classes from './page.module.css'
 
 export default async function PageOrgane({ params }) {
@@ -9,7 +9,7 @@ export default async function PageOrgane({ params }) {
     return (
         <div>
             <h1 className={classes.h1}>{organe.nom}</h1>
-            <MembersGrid organeRoster={organeRoster}/>
+            <Grid EntitiesArray={organeRoster}/>
         </div>
     )
 }
