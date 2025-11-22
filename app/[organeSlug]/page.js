@@ -1,5 +1,5 @@
 import { getOrganeFromAlias, getMembresFromOrganeId } from "@/lib/organe";
-import MembersGrid from "@/components/MembersGrid";
+import MembersGrid from "@/components/page_organe/MembersGrid";
 import classes from './page.module.css'
 
 export default async function PageOrgane({ params }) {

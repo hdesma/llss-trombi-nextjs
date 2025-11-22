@@ -25,6 +25,7 @@ function setUpDatabase(db) {
         CREATE TABLE IF NOT EXISTS organes (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nom TEXT NOT NULL,
+        short TEXT NOT NULL,
         alias TEXT NOT NULL,
         id_chef INTEGER NULL,
         ischeffe BOOLEAN NOT NULL DEFAULT 0,
@@ -49,6 +50,7 @@ function fillDatabase(db) {
     const organesInsert = db.prepare(`INSERT INTO organes VALUES(
         null,
         @nom,
+        @short,
         @alias,
         null,
         false,

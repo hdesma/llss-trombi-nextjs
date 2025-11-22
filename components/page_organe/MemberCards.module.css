@@ -5,12 +5,14 @@
 .card {
   height: 100%;
   margin: 10px;
+  border: 1px solid grey;
+  border-radius: 5%;
   box-shadow: 2px 2px 1px grey;
   h2 {
     text-align: center;
   }
   .imagebox {
     position: relative;
-    height:15rem;
+    height: 15rem;
   }
 }

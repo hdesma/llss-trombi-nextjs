@@ -14,7 +14,7 @@ export default function MainHeader() {
                     <ul>
                         <NavLink href="/">Accueil</NavLink>
                         {organesNavBar.map((organe) => {
-                            return <NavLink href={organe.alias} key={organe.id}>{organe.nom}</NavLink>
+                            return <NavLink href={organe.alias} key={organe.id}>{organe.short}</NavLink>
                         })}
                     </ul>
                 </nav>
