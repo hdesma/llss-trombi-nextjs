@@ -1,15 +1,10 @@
-.image {
-  margin: 0 auto;
-}
-
 .card {
   flex: 1 0 30%;
   height: 100%;
   max-width: 286px;
   margin: 10px;
-  border: 1px solid #D3D3D3;
+  border: 1px solid #d3d3d3;
   border-radius: 5%;
-  box-shadow: 2px 2px 1px #D3D3D3;
   h2 {
     text-align: center;
     height: 60px;
@@ -18,7 +13,7 @@
     position: relative;
     height: 20rem;
     border-radius: 5% 5% 0 0;
-    background-color: #D3D3D3;
+    background-color: #d3d3d3;
     @media (min-width: 600px) {
       img {
         border-radius: 5%;
@@ -27,11 +22,26 @@
   }
 }
 
+#photoChef {
+  margin: 2rem auto;
+}
+
+.card:hover, #photoChef:hover {
+  box-shadow: 3px 3px 5px #808080;
+}
+
+.image {
+  margin: 0 auto;
+}
+
 @media (max-width: 600px) {
-  .card {
+  .card, #photoChef {
     flex: 1 0 75%;
     max-width: 75%;
     border: none;
     box-shadow: none;
+    img {
+      border-radius: 5% 5% 0 0;
+    }
   }
 }

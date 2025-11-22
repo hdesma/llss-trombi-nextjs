@@ -28,7 +28,7 @@ function setUpDatabase(db) {
         short TEXT NOT NULL,
         alias TEXT NOT NULL,
         id_chef INTEGER NULL,
-        ischeffe BOOLEAN NOT NULL DEFAULT 0,
+        is_cheffe BOOLEAN NOT NULL DEFAULT 0,
         description TEXT NOT NULL,
         image TEXT NOT NULL,
         display_organe BOOLEAN NOT NULL DEFAULT 1
@@ -52,8 +52,8 @@ function fillDatabase(db) {
         @nom,
         @short,
         @alias,
-        null,
-        false,
+        @id_chef,
+        @is_cheffe,
         @description,
         @image,
         true

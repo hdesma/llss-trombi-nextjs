@@ -3,12 +3,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import classes from './MainHeader.module.css'
 
-
-export default function NavLink({ href, key, children }) {
+export default function NavLink({ href, id, children }) {
     const path = usePathname()
-
-    return <li key={key}>
-        <Link /*className={path.startsWith(href) ? `${classes.active} ${classes.link}` : `${classes.link}`}*/ href={href}>
+    return <li key={id}>
+        <Link className={(path === `/${href}` || (id === "accueil" && path === `/`) || (`/${id}`===path)) ? classes.active : undefined} href={href}>
             {children}
         </Link>
     </li>

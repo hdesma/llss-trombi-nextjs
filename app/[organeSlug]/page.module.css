@@ -1,3 +1,11 @@
-.h1 {
+.organeHeader, .organeDescription, .organeChef, .membres {
   text-align: center;
+    margin:2rem 0
+
 }
+
+
+.organeChefPhoto {
+  margin:0 auto
+}
+

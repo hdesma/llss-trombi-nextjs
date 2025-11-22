@@ -3,6 +3,9 @@
   justify-content: space-around;
   align-items: center;
   padding: 2rem 1rem;
+  background-color: #223659;
+  position: sticky;
+  top: 0px;
 }
 
 .nav ul {
@@ -20,6 +23,15 @@
   font-weight: bold;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
+  color: white;
+}
+
+.active {
+  background-color: #131e31ff;
+}
+
+.nav a:hover {
+  background-color: #131e31ff;
 }
 
 .grid {

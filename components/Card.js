@@ -2,13 +2,13 @@ import Image from "next/image"
 import classes from './Card.module.css'
 import Link from "next/link"
 
-export function Card({ entity }) {
+export function Card({ entity, photoChef }) {
     let nomComplet = entity.nom
     if (entity.prenom) {
         nomComplet = `${entity.prenom} ${entity.nom[0]}.`
     }
 
-    return <div className={classes.card}>
+    return <div className={classes.card} id={photoChef ? classes.photoChef  : undefined}>
         {entity.alias ? <Link href={`/${entity.alias}`}>
             <div className={classes.imagebox}>
                 <Image src={entity.image} alt={nomComplet ? `Photo ${nomComplet}` : `Photo ${entity.nom}`} fill objectFit="contain" />
