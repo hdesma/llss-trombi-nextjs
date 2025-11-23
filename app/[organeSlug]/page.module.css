@@ -1,11 +1,30 @@
-.organeHeader, .organeDescription, .organeChef, .membres {
+.organeHeader,
+.organeDescription,
+.organeChef,
+.membres,
+.documents {
   text-align: center;
-    margin:2rem 0
-
+  margin: 2rem 0;
 }
 
+.documents {
+  ul {
+    list-style-type: circle;
+  }
+  h2 {
+    margin: 2rem;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  a:link {
+    color: blue;
+  }
+  a:visited {
+    color: purple;
+  }
+}
 
 .organeChefPhoto {
-  margin:0 auto
+  margin: 0 auto;
 }
-

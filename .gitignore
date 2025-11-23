@@ -41,7 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 # db scripts
-/databases/db_sources
+/databases/db_sources/*
 /databases/!db_scripts
 
 # db
@@ -50,3 +50,6 @@ next-env.d.ts
 # images
 /public/images/*
 !/public/images/default
+
+# documents
+/public/documents/*
