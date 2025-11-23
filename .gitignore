@@ -48,4 +48,5 @@ next-env.d.ts
 *.db
 
 # images
-/public/images/!default
+/public/images/*
+!/public/images/default
