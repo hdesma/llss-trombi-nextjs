@@ -1,0 +1,22 @@
+.navDesktop ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 10;
+}
+
+.navDesktop a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  line-height: 2rem;
+}
+
+.navDesktop a:hover {
+  background-color: #131e31ff;
+}

@@ -21,10 +21,8 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
-				<div style={{ overflow: "visible" }}>
-					<MainHeader />
-					{children}
-				</div>
+				<MainHeader />
+				{children}
 			</body>
 		</html>
 	);

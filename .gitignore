@@ -53,3 +53,6 @@ next-env.d.ts
 
 # documents
 /public/documents/*
+
+# todo
+/todo.md

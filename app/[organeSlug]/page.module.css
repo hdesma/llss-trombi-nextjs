@@ -8,8 +8,8 @@
 }
 
 .documents {
-  ul {
-    list-style-type: circle;
+  .listeDocuments {
+    margin: 0 30%;
   }
   h2 {
     margin: 2rem;
@@ -25,6 +25,17 @@
   }
 }
 
+.listeDocuments li {
+ list-style-position: inside;
+ text-align: start;
+}
+
 .organeChefPhoto {
   margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+  .organeHeader {
+    margin: 4rem 0;
+  }
 }

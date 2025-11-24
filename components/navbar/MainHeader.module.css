@@ -1,4 +1,4 @@
-.header {
+.headerDesktop {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -8,29 +8,15 @@
   top: 0px;
 }
 
-.nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.headerMobile {
+  padding: 1rem 0;
+  position: absolute;
+  width: 100%;
   display: flex;
-  gap: 0.5rem;
-  flex-shrink: 10;
-}
-
-.nav a {
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  color: white;
+  align-content: center;
 }
 
 .active {
-  background-color: #131e31ff;
-}
-
-.nav a:hover {
   background-color: #131e31ff;
 }
 
@@ -39,13 +25,19 @@
 }
 
 @media (min-width: 600px) {
-  .header {
+  .headerDesktop {
     padding: 2rem 10%;
   }
 }
 
+@media (min-width: 992px) {
+  .headerMobile {
+    display: none;
+  }
+}
+
 @media (max-width: 992px) {
-  .nav a {
-    font-size: 0.75rem;
+  .headerDesktop {
+    display: none;
   }
 }

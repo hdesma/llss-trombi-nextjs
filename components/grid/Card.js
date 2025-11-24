@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image"
 import classes from './Card.module.css'
 import Link from "next/link"

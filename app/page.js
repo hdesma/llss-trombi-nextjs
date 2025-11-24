@@ -1,6 +1,5 @@
-import styles from "./page.module.css";
 import { getAllDisplayOrganes } from "@/lib/organe";
-import Grid from "@/components/Grid";
+import Grid from "@/components/grid/Grid";
 
 export default function Home() {
 
