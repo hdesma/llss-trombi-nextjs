@@ -7,7 +7,7 @@
   margin: 2rem 0;
 }
 
-.documents {
+.organeDocuments {
   .listeDocuments {
     margin: 0 30%;
   }
@@ -26,12 +26,26 @@
 }
 
 .listeDocuments li {
- list-style-position: inside;
- text-align: start;
+  list-style-position: inside;
+  text-align: start;
 }
 
 .organeChefPhoto {
   margin: 0 auto;
+}
+
+@media (max-width: 320px) {
+  .organeHeader {
+    font-size: 1.5rem;
+  }
+  .documentHeader, .cardHeader {
+    font-size: 1rem;
+  }
+  .organeDocuments {
+    .listeDocuments {
+      margin: 0 10%;
+    }
+  }
 }
 
 @media (max-width: 992px) {
