@@ -1,12 +1,24 @@
 import { getOrganeFromAlias, getMembresFromOrganeId, } from "@/lib/organe";
-import { getDocumentsFromOrganeId } from '@/lib/document'
+import { getDocumentsFromOrganeId } from '@/lib/document';
+import { Metadata, ResolvingMetadata } from 'next';
 import Grid from "@/components/grid/Grid";
 import { Card } from "@/components/grid/Card";
 import classes from './page.module.css'
 
+
+export async function generateMetadata({ params }) {
+    const { organeSlug } = await params;
+    const organe = getOrganeFromAlias(organeSlug);
+    return {
+        title: `LLSS: ${organe.nom}`,
+        description: `Trombinoscope ${organe.nom}`,
+    }
+}
+
+
 export default async function PageOrgane({ params }) {
     const { organeSlug } = await params;
-    const organe = await getOrganeFromAlias(organeSlug);
+    const organe = getOrganeFromAlias(organeSlug);
     let organeRoster = getMembresFromOrganeId(organe.id);
     let chefOrgane = undefined;
     if (organe.id_chef) {

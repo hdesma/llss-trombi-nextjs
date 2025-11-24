@@ -2,7 +2,7 @@
 import Image from "next/image"
 import classes from './Card.module.css'
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Modal from "./Modal"
 import { createPortal } from "react-dom"
 
@@ -17,7 +17,6 @@ export function Card({ entity, photoChef }) {
         setShowModal(true);
     }
 
-console.log(isOrgane)
     return <div className={classes.card} id={photoChef ? classes.photoChef : undefined}>
         {isOrgane ?
             <Link href={`/${entity.alias}`}>
