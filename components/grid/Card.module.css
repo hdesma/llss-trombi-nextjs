@@ -26,7 +26,8 @@
   margin: 2rem auto;
 }
 
-.card:hover, #photoChef:hover {
+.card:hover,
+#photoChef:hover {
   box-shadow: 3px 3px 5px #808080;
 }
 
@@ -34,8 +35,20 @@
   margin: 0 auto;
 }
 
-@media (max-width: 480px){
-  .card{
+@media (max-width: 600px) {
+  .card {
+    flex: 1 0 75%;
+    max-width: 75%;
+    border: none;
+    box-shadow: none;
+    img {
+      border-radius: 5% 5% 0 0;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
     max-width: 40%;
     height: 205px;
     flex: 1 0 75%;
@@ -45,22 +58,10 @@
       border-radius: 5% 5% 0 0;
     }
     h2 {
-      font-size: 0.75rem
+      font-size: 0.75rem;
     }
-    .imagebox{
+    .imagebox {
       height: 10rem;
-    }
-  }
-}
-
-@media (max-width: 600px) and  (min-width: 481px) {
-  .card, #photoChef {
-    flex: 1 0 75%;
-    max-width: 75%;
-    border: none;
-    box-shadow: none;
-    img {
-      border-radius: 5% 5% 0 0;
     }
   }
 }

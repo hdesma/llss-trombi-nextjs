@@ -24,23 +24,28 @@ export default async function PageOrgane({ params }) {
         <div>
             <h1 className={classes.organeHeader}>{organe.nom}</h1>
             <div>
-                {organe.description && <p className={classes.organeDescription}>{organe.description}</p>}
-                {documents.length > 0 && <div className={classes.organeDocuments}>
-                    <h2 className={classes.documentHeader}>Documents disponibles:</h2>
-                    <ul className={classes.listeDocuments}>
-                        {documents.map((document) => <li key={document.id}>
-                            <a href={document.path} target="_blank" rel="noopener noreferrer" download>{document.nom}</a> par {document.auteur}
-                            {document.description && <p>{document.description}</p>}
-                        </li>)}
-                    </ul>
-                </div>}
+                {organe.description &&
+                    <p className={classes.organeDescription}>{organe.description}</p>
+                }
+                {documents.length > 0 &&
+                    <div className={classes.organeDocuments}>
+                        <h2 className={classes.documentHeader}>Documents disponibles:</h2>
+                        <ul className={classes.listeDocuments}>
+                            {documents.map((document) => <li key={document.id}>
+                                <a href={document.path} target="_blank" rel="noopener noreferrer" download>{document.nom}</a> par {document.auteur}
+                                {document.description && <p>{document.description}</p>}
+                            </li>)}
+                        </ul>
+                    </div>
+                }
             </div>
 
             {organe.id_chef &&
                 <div className={classes.organeChef}>
                     {organe.is_cheffe ? <h2 className={classes.cardHeader}>Cheffe:</h2> : <h2 className={classes.chefHeader}>Chef:</h2>}
                     <Card photoChef={true} entity={chefOrgane && chefOrgane} />
-                </div>}
+                </div>
+            }
 
             <div className={classes.membres}>
                 <h2 className={classes.cardHeader}>Membres:</h2>

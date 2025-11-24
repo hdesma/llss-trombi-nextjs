@@ -24,11 +24,6 @@
   display: grid;
 }
 
-@media (min-width: 600px) {
-  .headerDesktop {
-    padding: 2rem 10%;
-  }
-}
 
 @media (min-width: 992px) {
   .headerMobile {
@@ -39,5 +34,11 @@
 @media (max-width: 992px) {
   .headerDesktop {
     display: none;
+  }
+}
+
+@media (min-width: 600px) {
+  .headerDesktop {
+    padding: 2rem 10%;
   }
 }

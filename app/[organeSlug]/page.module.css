@@ -1,6 +1,7 @@
 .organeHeader,
 .organeDescription,
 .organeChef,
+.documentHeader,
 .membres,
 .documents {
   text-align: center;
@@ -34,11 +35,19 @@
   margin: 0 auto;
 }
 
+@media (max-width: 992px) {
+  .organeHeader {
+    margin: 4rem 0;
+  }
+}
+
 @media (max-width: 320px) {
   .organeHeader {
     font-size: 1.5rem;
+    margin: 4rem 1rem 2rem;
   }
-  .documentHeader, .cardHeader {
+  .documentHeader,
+  .cardHeader {
     font-size: 1rem;
   }
   .organeDocuments {
@@ -48,8 +57,4 @@
   }
 }
 
-@media (max-width: 992px) {
-  .organeHeader {
-    margin: 4rem 0;
-  }
-}
+
