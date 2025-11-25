@@ -2,7 +2,7 @@
 import Image from "next/image"
 import classes from './Card.module.css'
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Modal from "./Modal"
 import { createPortal } from "react-dom"
 
