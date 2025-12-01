@@ -19,13 +19,11 @@ export default async function PageOrgane({ params }) {
     const organe = getOrganeFromAlias(organeSlug);
     let organeRoster = getMembresFromOrganeId(organe.id);
     let chefsRoster = getChef(organe.id)
-    if (chefsRoster) {
-        const chefId = chefsRoster.map(chef => organeRoster.find(membre => membre.id === chef.id).id)
-        console.log(chefId)
-        organeRoster = organeRoster.filter((membre) => {
-            return !chefId.includes(membre.id)
-        })
-    }
+    const chefId = chefsRoster.map(chef => organeRoster.find(membre => membre.id === chef.id).id)
+    console.log(chefId)
+    organeRoster = organeRoster.filter((membre) => {
+        return !chefId.includes(membre.id)
+    })
     organeRoster.sort((a, b) => {
         return a.nom.localeCompare(b.nom);
     })
@@ -50,12 +48,15 @@ export default async function PageOrgane({ params }) {
                     </div>
                 }
             </div>
+
+            {chefsRoster.length > 0 &&
+                <div className={classes.membres}>
+                    <h2 className={classes.cardHeader}>{chefsRoster.length === 1 ? "Responsable" : "Responsables"}:</h2>
+                    <Grid EntitiesArray={chefsRoster} />
+                </div>
+            }
             <div className={classes.membres}>
-                <h2 className={classes.cardHeader}>{chefsRoster.length === 1 ? "Responsable" : "Responsables"}:</h2>
-                <Grid EntitiesArray={chefsRoster} />
-            </div>
-            <div className={classes.membres}>
-                <h2 className={classes.cardHeader}>Membres:</h2>
+                <h2 className={classes.cardHeader}>{organeRoster.length > 1 ? "Membres" : "Membre"}:</h2>
                 <Grid EntitiesArray={organeRoster} />
             </div>
         </div>
