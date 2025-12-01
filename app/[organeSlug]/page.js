@@ -1,5 +1,5 @@
 'use server'
-import { getOrganeFromAlias, getMembresFromOrganeId, } from "@/lib/organe";
+import { getOrganeFromAlias, getMembresFromOrganeId, getChef } from "@/lib/organe";
 import { getDocumentsFromOrganeId } from '@/lib/document';
 import Grid from "@/components/grid/Grid";
 import { Card } from "@/components/grid/Card";
@@ -18,11 +18,12 @@ export default async function PageOrgane({ params }) {
     const { organeSlug } = await params;
     const organe = getOrganeFromAlias(organeSlug);
     let organeRoster = getMembresFromOrganeId(organe.id);
-    let chefOrgane = undefined;
-    if (organe.id_chef) {
-        chefOrgane = organeRoster.find(membre => membre.id === organe.id_chef);
+    let chefsRoster = getChef(organe.id)
+    if (chefsRoster) {
+        const chefId = chefsRoster.map(chef => organeRoster.find(membre => membre.id === chef.id).id)
+        console.log(chefId)
         organeRoster = organeRoster.filter((membre) => {
-            return membre.id !== chefOrgane.id;;
+            return !chefId.includes(membre.id)
         })
     }
     organeRoster.sort((a, b) => {
@@ -49,14 +50,10 @@ export default async function PageOrgane({ params }) {
                     </div>
                 }
             </div>
-
-            {organe.id_chef &&
-                <div className={classes.organeChef}>
-                    {organe.is_cheffe ? <h2 className={classes.cardHeader}>Cheffe:</h2> : <h2 className={classes.chefHeader}>Chef:</h2>}
-                    <Card photoChef={true} entity={chefOrgane && chefOrgane} />
-                </div>
-            }
-
+            <div className={classes.membres}>
+                <h2 className={classes.cardHeader}>{chefsRoster.length === 1 ? "Responsable" : "Responsables"}:</h2>
+                <Grid EntitiesArray={chefsRoster} />
+            </div>
             <div className={classes.membres}>
                 <h2 className={classes.cardHeader}>Membres:</h2>
                 <Grid EntitiesArray={organeRoster} />
