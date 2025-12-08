@@ -120,8 +120,6 @@ function fillCorrespondancesTable(db, rosters) {
         })
 
         membresId.forEach((id_personnel) => {
-            console.log(chefIdArray, id_personnel)
-
             isChef = chefIdArray ? (chefIdArray.includes(id_personnel.id) ? 1 : 0) : 0;
             const args = { id_organe: organeId.id, id_personnel: id_personnel.id, is_chef: isChef }
             db.prepare(`INSERT INTO correspondances VALUES(
