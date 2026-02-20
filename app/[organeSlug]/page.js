@@ -5,14 +5,14 @@ import Grid from "@/components/grid/Grid";
 import { Card } from "@/components/grid/Card";
 import classes from './page.module.css'
 
-export async function generateMetadata({ params }) {
-    const { organeSlug } = await params;
-    const organe = getOrganeFromAlias(organeSlug);
-    return {
-        title: `LLSS: ${organe.nom}`,
-        description: `Trombinoscope ${organe.nom}`,
-    }
-}
+// export async function generateMetadata({ params }) {
+//     const { organeSlug } = await params;
+//     const organe = getOrganeFromAlias(organeSlug);
+//     return {
+//         title: `LLSS: ${organe.nom}`,
+//         description: `Trombinoscope ${organe.nom}`,
+//     }
+// }
 
 export default async function PageOrgane({ params }) {
     const { organeSlug } = await params;
@@ -20,7 +20,6 @@ export default async function PageOrgane({ params }) {
     let organeRoster = getMembresFromOrganeId(organe.id);
     let chefsRoster = getChef(organe.id)
     const chefId = chefsRoster.map(chef => organeRoster.find(membre => membre.id === chef.id).id)
-    console.log(chefId)
     organeRoster = organeRoster.filter((membre) => {
         return !chefId.includes(membre.id)
     })
