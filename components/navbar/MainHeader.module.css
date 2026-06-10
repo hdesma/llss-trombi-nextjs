@@ -3,7 +3,7 @@
   justify-content: space-around;
   align-items: center;
   padding: 2rem 1rem;
-  background-color: #223659;
+  background-color: #0f105f;
   position: sticky;
   top: 0px;
 }
@@ -17,7 +17,7 @@
 }
 
 .active {
-  background-color: #131e31ff;
+  background-color: #0A0B3E ;
 }
 
 .grid {
