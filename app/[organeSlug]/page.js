@@ -16,6 +16,7 @@ export async function generateMetadata({ params }) {
 
 export default async function PageOrgane({ params }) {
     const { organeSlug } = await params;
+
     const organe = getOrganeFromAlias(organeSlug);
     let organeRoster = getMembresFromOrganeId(organe.id);
     let chefsRoster = getChef(organe.id)
