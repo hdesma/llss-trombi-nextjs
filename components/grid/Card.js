@@ -21,11 +21,11 @@ export function Card({ entity, photoChef }) {
         {isOrgane ?
             <Link href={`/${entity.alias}`}>
                 <div className={classes.imagebox}>
-                    <Image src={entity.image} alt={nomComplet ? `Photo ${nomComplet}` : `Photo ${entity.nom}`} fill objectFit="contain" />
+                    <Image src={"/LLSS/llss-trombi-nextjs"+entity.image} alt={nomComplet ? `Photo ${nomComplet}` : `Photo ${entity.nom}`} fill objectFit="contain" />
                 </div>
             </Link> :
             <div className={classes.imagebox} onClick={handleClick}>
-                <Image src={entity.image} alt={nomComplet ? `Photo ${nomComplet}` : `Photo ${entity.nom}`} fill objectFit="contain" />
+                <Image src={"/LLSS/llss-trombi-nextjs"+entity.image} alt={nomComplet ? `Photo ${nomComplet}` : `Photo ${entity.nom}`} fill objectFit="contain" />
             </div>}
         <h2>{nomComplet ? nomComplet : entity.nom}</h2>
         {(showModal && !isOrgane) && createPortal(<Modal onClose={()=> {setShowModal(false)}} image={entity.image} />, document.body)}

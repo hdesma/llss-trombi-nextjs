@@ -42,7 +42,7 @@ export default async function PageOrgane({ params }) {
                         <h2 className={classes.documentHeader}>Documents disponibles:</h2>
                         <ul className={classes.listeDocuments}>
                             {documents.map((document) => <li key={document.id}>
-                                <a href={document.path} target="_blank" rel="noopener noreferrer" download>{document.nom}</a> par {document.auteur}
+                                <a href={"/LLSS/llss-trombi-nextjs"+document.path} target="_blank" rel="noopener noreferrer" download>{document.nom}</a> par {document.auteur}
                                 {document.description && <p>{document.description}</p>}
                             </li>)}
                         </ul>

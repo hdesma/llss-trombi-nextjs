@@ -4,6 +4,8 @@ import NavLink from "./NavLink"
 import { useEffect, useState } from "react"
 import classes from "./NavBarMobile.module.css"
 import { useRouter } from "next/navigation"
+import path from 'path';
+
 
 export default function NavbarMobile({ organes }) {
     const [isDisplayed, setIsDisplayed] = useState(false)
