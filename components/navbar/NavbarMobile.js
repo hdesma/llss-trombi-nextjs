@@ -21,13 +21,12 @@ export default function NavbarMobile({ organes }) {
             setIsDisplayed(false)
         }
     }
-
     return <nav className={classes.navMobile} onBlur={(event) => handleOnBlur(event)}>
         <button onClick={toggleMenu}><Image src={imagePath} height="20" width="20" alt="burger menu" /></button>
         {isDisplayed && <ul>
             <NavLink id="accueil" href="/">Accueil</NavLink>
             {organes.map((organe) => {
-                return <NavLink href={"llss-trombi-nextjs/"+organe.alias} id={organe.id} key={organe.id}>{organe.short}</NavLink>
+                return <NavLink href={organe.alias} id={organe.id} key={organe.id}>{organe.short}</NavLink>
             })}
         </ul>}
     </nav>
