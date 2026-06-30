@@ -1,6 +1,5 @@
 import NavLink from "./NavLink";
 import classes from "./NavBarDesktop.module.css"
-import { usePathname } from 'next/navigation'
 
 export default function NavbarDesktop({ organes }) {
     return <nav className={classes.navDesktop}>
