@@ -27,7 +27,7 @@ export default function NavbarMobile({ organes }) {
         {isDisplayed && <ul>
             <NavLink id="accueil" href="/">Accueil</NavLink>
             {organes.map((organe) => {
-                return <NavLink href={organe.alias} id={organe.id} key={organe.id}>{organe.short}</NavLink>
+                return <NavLink href={"llss-trombi-nextjs/"+organe.alias} id={organe.id} key={organe.id}>{organe.short}</NavLink>
             })}
         </ul>}
     </nav>
