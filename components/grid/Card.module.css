@@ -13,7 +13,6 @@
     position: relative;
     height: 20rem;
     border-radius: 5% 5% 0 0;
-    background-color: #d3d3d3;
     @media (min-width: 600px) {
       img {
         border-radius: 5%;
