@@ -22,7 +22,7 @@ export default function NavbarMobile({ organes }) {
         }
     }
     return <nav className={classes.navMobile} onBlur={(event) => handleOnBlur(event)}>
-        <button onClick={toggleMenu}><Image src={"/LLSS/llss-trombi-nextjs"+imagePath} height="20" width="20" alt="burger menu" /></button>
+        <button onClick={toggleMenu}><Image src={process.env.NEXT_PUBLIC_PATH+imagePath} height="20" width="20" alt="burger menu" /></button>
         {isDisplayed && <ul>
             <NavLink id="accueil" href="/">Accueil</NavLink>
             {organes.map((organe) => {
