@@ -56,3 +56,6 @@ next-env.d.ts
 
 # todo
 /todo.md
+
+# config file (for access path purposes)
+/next.config.mjs
