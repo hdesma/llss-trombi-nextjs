@@ -30,7 +30,7 @@ export default async function PageOrgane({ params }) {
         return !responsableId.includes(membre.id)
     })
     organeRoster.sort((a, b) => {
-        return a.nom.localeCompare(b.nom);
+        return a.prenom.localeCompare(b.prenom);
     })
 
     let documents = getDocumentsFromOrganeId(organe.id)
