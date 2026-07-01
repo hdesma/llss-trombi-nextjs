@@ -20,7 +20,7 @@ export default async function PageOrgane({ params }) {
     let organeRoster = getMembresFromOrganeId(organe.id);
     let responsablesRoster = getResponsable(organe.id)
     const responsableId = responsablesRoster.map(responsable => organeRoster.find(membre => membre.id === responsable.id).id)
-    const customTitreArray =  organe.resp_titre ? organe.resp_titre.split(", ") : null;
+    const customTitreArray =  organe.resp_titre!==null ? organe.resp_titre.split(", ") : null;
     //TODO plus tard, exploiter les autres champs possibles. Pour le moment le usecase est "masculin singulier"
     const customTitre = customTitreArray[0];
     organeRoster = organeRoster.filter((membre) => {
@@ -53,7 +53,7 @@ export default async function PageOrgane({ params }) {
 
             {responsablesRoster.length > 0 &&
                 <div className={classes.membres}>
-                    <h2 className={classes.cardHeader}>{customTitre ? customTitre : (responsablesRoster.length === 1 ? "Responsable" : "Responsables")}:</h2>
+                    <h2 className={classes.cardHeader}>{customTitre!==null ? customTitre : (responsablesRoster.length === 1 ? "Responsable" : "Responsables")}:</h2>
                     <Grid EntitiesArray={responsablesRoster} />
                 </div>
             }
