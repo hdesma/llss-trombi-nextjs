@@ -6,7 +6,7 @@ import { useState } from "react"
 import Modal from "./Modal"
 import { createPortal } from "react-dom"
 
-export function Card({ entity, photoChef }) {
+export function Card({ entity, photoResponsable }) {
     const [showModal, setShowModal] = useState(false)
     const isOrgane = !Object.hasOwn(entity, "prenom") 
     let nomComplet = entity.nom
@@ -17,7 +17,7 @@ export function Card({ entity, photoChef }) {
         setShowModal(true);
     }
 
-    return <div className={classes.card} id={photoChef ? classes.photoChef : undefined}>
+    return <div className={classes.card} id={photoResponsable ? classes.photoResponsable : undefined}>
         {isOrgane ?
             <Link href={`/${entity.alias}`}>
                 <div className={classes.imagebox}>

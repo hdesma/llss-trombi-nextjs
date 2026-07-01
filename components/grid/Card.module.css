@@ -22,12 +22,12 @@
   }
 }
 
-#photoChef {
+#photoResponsable {
   margin: 2rem auto;
 }
 
 .card:hover,
-#photoChef:hover {
+#photoResponsable:hover {
   box-shadow: 3px 3px 5px #808080;
 }
 

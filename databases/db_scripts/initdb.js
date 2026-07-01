@@ -30,6 +30,7 @@ function setUpDatabase(db) {
             nom TEXT NOT NULL,
             short TEXT NOT NULL,
             alias TEXT NOT NULL,
+            resp_titre TEXT,
             description TEXT NOT NULL,
             image TEXT NOT NULL,
             display_organe BOOLEAN NOT NULL DEFAULT 1
@@ -41,7 +42,7 @@ function setUpDatabase(db) {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             id_organe INTEGER NOT NULL,
             id_personnel INTEGER NOT NULL,
-            is_chef BOOLEAN,
+            is_responsable BOOLEAN,
             display_link BOOLEAN NOT NULL DEFAULT 1
         );
     `).run();
@@ -67,6 +68,7 @@ function fillDatabase(db) {
             @nom,
             @short,
             @alias,
+            @resp_titre,
             @description,
             @image,
             true
@@ -114,19 +116,19 @@ function fillCorrespondancesTable(db, rosters) {
         const organeAlias = organe.organeAlias
         const membresNomsArray = organe.membresNomsArray
         const organeId = db.prepare(`SELECT id FROM organes WHERE alias=?`).get(organeAlias)
-        const chefIdArray = organe.chef
+        const ResponsableIdArray = organe.responsableId
         const membresId = membresNomsArray.map((membreNom) => {
             return db.prepare(`SELECT id FROM personnel WHERE nom=?`).get(membreNom)
         })
 
         membresId.forEach((id_personnel) => {
-            isChef = chefIdArray ? (chefIdArray.includes(id_personnel.id) ? 1 : 0) : 0;
-            const args = { id_organe: organeId.id, id_personnel: id_personnel.id, is_chef: isChef }
+            isResponsable = ResponsableIdArray ? (ResponsableIdArray.includes(id_personnel.id) ? 1 : 0) : 0;
+            const args = { id_organe: organeId.id, id_personnel: id_personnel.id, is_responsable: isResponsable }
             db.prepare(`INSERT INTO correspondances VALUES(
             null,
             @id_organe,
             @id_personnel,
-            @is_chef,
+            @is_responsable,
             true
             )`).run(args)
         })
