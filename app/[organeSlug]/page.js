@@ -32,7 +32,7 @@ export default async function PageOrgane({ params }) {
     organeRoster.sort((a, b) => {
         return a.prenom.localeCompare(b.prenom);
     })
-
+console.log(process.env.NEXT_PUBLIC_TEST)
     let documents = getDocumentsFromOrganeId(organe.id)
     return (
         <div>
@@ -46,7 +46,7 @@ export default async function PageOrgane({ params }) {
                         <h2 className={classes.documentHeader}>Documents disponibles:</h2>
                         <ul className={classes.listeDocuments}>
                             {documents.map((document) => <li key={document.id}>
-                                <a href={"/LLSS/llss-trombi-nextjs" + document.path} target="_blank" rel="noopener noreferrer" download>{document.nom}</a> par {document.auteur}
+                                <a href={process.env.NEXT_PUBLIC_PATH + document.path} target="_blank" rel="noopener noreferrer" download>{document.nom}</a> par {document.auteur}
                                 {document.description && <p>{document.description}</p>}
                             </li>)}
                         </ul>
